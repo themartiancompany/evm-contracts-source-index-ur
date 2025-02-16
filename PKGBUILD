@@ -66,6 +66,7 @@ _local="file://${HOME}/${_pkg}"
 _http="https://${_host}/${_ns}/${_pkg}"
 _url="${_http}"
 depends=(
+  "evm-gnupg"
   "fur"
   "libcrash-bash"
   "lur"
@@ -76,7 +77,7 @@ makedepends=(
 )
 if [[ "${_solc}" == "true" ]]; then
   makedepends+=(
-    "solidity=0.8.24"
+    "solidity=0.8.28"
   )
 fi
 if [[ "${_hardhat}" == "true" ]]; then
