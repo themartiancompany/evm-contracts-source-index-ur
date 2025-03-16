@@ -52,7 +52,7 @@ pkgbase="${_pkg}"
 pkgname=(
   "${pkgbase}"
 )
-if [[ "${_docs}" == "true" ]]; then
+if [[ "${_contracts}" == "true" ]]; then
   pkgname+=(
     "${_pkg}-contracts"
   )
@@ -99,20 +99,27 @@ depends=(
   "lur"
 )
 makedepends=(
-  'evm-make'
   'make'
-  "${_py}-docutils"
 )
-if [[ "${_solc}" == "true" ]]; then
+if [[ "${_docs}" == "true" ]]; then
   makedepends+=(
-    "solidity=0.8.28"
-    "solidity=0.8.24"
+    "${_py}-docutils"
   )
-fi
-if [[ "${_hardhat}" == "true" ]]; then
+if [[ "${_contracts}" == "true" ]]; then
   makedepends+=(
-    "hardhat"
+    'evm-make'
   )
+  if [[ "${_solc}" == "true" ]]; then
+    makedepends+=(
+      "solidity=0.8.28"
+      "solidity=0.8.24"
+    )
+  fi
+  if [[ "${_hardhat}" == "true" ]]; then
+    makedepends+=(
+      "hardhat"
+    )
+  fi
 fi
 checkdepends=(
   'shellcheck'
@@ -191,20 +198,23 @@ build() {
     _make_opts=()
   _make_opts=(
     --debug
+      SOLIDITY_COMPILER_BACKEND="solc" \
   )
   cd \
     "${_tarname}"
-  if [[ "${_solc}" == "true" ]]; then
-    SOLIDITY_COMPILER_BACKEND="solc" \
-    make \
-      "${_make_opts[@]}" \
-      all
-  fi
-  if [[ "${_hardhat}" == "true" ]]; then
-    SOLIDITY_COMPILER_BACKEND="hardhat" \
-    make \
-      "${_make_opts[@]}" \
-      all
+  if [[ "${_contracts}" == "true" ]]; then
+    if [[ "${_solc}" == "true" ]]; then
+      SOLIDITY_COMPILER_BACKEND="solc" \
+      make \
+        "${_make_opts[@]}" \
+        all
+    fi
+    if [[ "${_hardhat}" == "true" ]]; then
+      SOLIDITY_COMPILER_BACKEND="hardhat" \
+      make \
+        "${_make_opts[@]}" \
+        all
+    fi
   fi
 }
 
@@ -238,6 +248,9 @@ package_ur-contracts() {
 package_ur() {
   local \
     _make_opts=()
+  depends+=(
+    "${_pkg}-contracts"
+  )
   _make_opts=(
     DESTDIR="${pkgdir}"
     PREFIX='/usr'
@@ -247,9 +260,20 @@ package_ur() {
   make \
     "${_make_opts[@]}" \
     install-scripts
+}
+
+package_ur-docs() {
+  local \
+    _make_opts=()
+  _make_opts=(
+    DESTDIR="${pkgdir}"
+    PREFIX='/usr'
+  )
+  cd \
+    "${_tarname}"
   make \
     "${_make_opts[@]}" \
-    install-doc
+    install-docs
   make \
     "${_make_opts[@]}" \
     install-man
