@@ -72,7 +72,7 @@ _pkgdesc=(
 pkgdesc="${_pkgdesc[*]}"
 url="https://www.${_Proj}.org"
 pkgver="0.1.1.1"
-_commit="74c3c72b6663b8af8a6edaedb74c977c3a3715aa"
+_commit="b5daa25e7f3d7641468e869e973b3cd3850fbba4"
 pkgrel=1
 arch=(
   'any'
@@ -275,7 +275,7 @@ package_ur-docs() {
     "${_tarname}"
   make \
     "${_make_opts[@]}" \
-    install-docs
+    install-doc
   make \
     "${_make_opts[@]}" \
     install-man
