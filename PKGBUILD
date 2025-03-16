@@ -44,14 +44,24 @@ _py="python"
 _proj="hip"
 _Proj="humaninstrumentalityproject.org"
 _git="false"
+_contracts="true"
 _hardhat="true"
 _solc="true"
 _pkg=ur
 pkgbase="${_pkg}"
 pkgname=(
   "${pkgbase}"
-  "${pkgbase}-contracts"
 )
+if [[ "${_docs}" == "true" ]]; then
+  pkgname+=(
+    "${_pkg}-contracts"
+  )
+fi
+if [[ "${_docs}" == "true" ]]; then
+  pkgname+=(
+    "${_pkg}-docs"
+  )
+fi
 _pkgdesc=(
   "Distributed, decentralized,"
   "uncensorable, cross-platform"
