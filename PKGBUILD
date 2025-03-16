@@ -140,10 +140,10 @@ _tarname="${_pkg}-${_tag}"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum='e4624f7710b85142a4b52d23baa41737fa9db62d2e92e47a780e663816cee710'
+_archive_sum="fe63788c6dad60445c2d613dde484108770d2dadc60be0d6c11f47301c876df0"
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum='1aa40e1aed1aec4b1a2685e69a029d70c1a78fe427db6f579dc7590ee1968858'
+_archive_sig_sum="5ea20db780f7865341eb253ed5e74c4b1623a3c11a9ff90037a98cf4bd1014bf"
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
@@ -279,3 +279,4 @@ package_ur-docs() {
     "${_make_opts[@]}" \
     install-man
 }
+
