@@ -200,7 +200,6 @@ build() {
     _make_opts=()
   _make_opts=(
     --debug
-      SOLIDITY_COMPILER_BACKEND="solc" \
   )
   cd \
     "${_tarname}"
