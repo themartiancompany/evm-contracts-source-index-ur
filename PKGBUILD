@@ -106,6 +106,7 @@ if [[ "${_docs}" == "true" ]]; then
   makedepends+=(
     "${_py}-docutils"
   )
+fi
 if [[ "${_contracts}" == "true" ]]; then
   makedepends+=(
     'evm-make'
