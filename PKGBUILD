@@ -45,6 +45,7 @@ _proj="hip"
 _Proj="humaninstrumentalityproject.org"
 _git="false"
 _contracts="true"
+_docs="true"
 _hardhat="true"
 _solc="true"
 _pkg=ur
