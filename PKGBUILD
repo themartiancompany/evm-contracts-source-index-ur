@@ -236,15 +236,11 @@ package_ur() {
     "${_tarname}"
   make \
     "${_make_opts[@]}" \
-    install
-  if [[ "${_solc}" == "true" ]]; then
-    make \
-      "${_make_opts[@]}" \
-      install-contracts-deployments-solc
-  fi
-  if [[ "${_hardhat}" == "true" ]]; then
-    make \
-      "${_make_opts[@]}" \
-      install-contracts-deployments-hardhat
-  fi
+    install-scripts
+  make \
+    "${_make_opts[@]}" \
+    install-doc
+  make \
+    "${_make_opts[@]}" \
+    install-man
 }
