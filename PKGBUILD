@@ -23,7 +23,6 @@
 # Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
 # Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
 # Maintainer: Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
-# Contributor: Fabio Castelli (muflone) <webreg@muflone.com>
 
 _os="$( \
   uname \
@@ -48,7 +47,7 @@ _contracts="true"
 _docs="true"
 _hardhat="true"
 _solc="true"
-_pkg=ur
+_pkg=evm-contracts-source-index
 pkgbase="${_pkg}"
 pkgname=(
   "${pkgbase}"
@@ -65,12 +64,15 @@ if [[ "${_docs}" == "true" ]]; then
 fi
 _pkgdesc=(
   "Distributed, decentralized,"
-  "uncensorable, cross-platform"
-  "user repository and application store"
-  "designed for Life and DogeOS."
+  "uncensorable, network-neutral"
+  "network-independent Ethereum Virtual"
+  "Machine (EVM) smart contracts source"
+  "code index and repository using the"
+  "Ethereum Virtual Machine File"
+  "System (EVMFS) for resources hosting."
 )
 pkgdesc="${_pkgdesc[*]}"
-url="https://www.${_Proj}.org"
+url="https://${_pkg}.${_Proj}.org"
 pkgver="0.1.1.1"
 _commit="b5daa25e7f3d7641468e869e973b3cd3850fbba4"
 pkgrel=1
@@ -93,11 +95,11 @@ _url="${_http}"
 depends=(
   "evm-contracts-tools"
   "evm-gnupg"
+  "evm-openpgp-keyserver"
   "evm-wallet"
-  "fur"
+  "evmfs"
   "libcrash-bash"
   "libevm"
-  "lur"
 )
 makedepends=(
   'make'
@@ -126,13 +128,13 @@ fi
 checkdepends=(
   'shellcheck'
 )
-_pub_optdepends=(
-  "pub:"
-    "for publishing applications"
-    "on the repository and the store."
+_evm_deployer_optdepends=(
+  "evm-deployer:"
+    "to deploy and verify contracts"
+    "in a single step."
 )
 optdepends=(
-  "${_pub_optdepends[*]}"
+  "${_evm_deployer_optdepends[*]}"
 )
 _tag_name="commit"
 _tag="${_commit}"
@@ -219,7 +221,7 @@ build() {
   fi
 }
 
-package_ur-contracts() {
+package_evm-contracts-source-index-contracts() {
   local \
     _make_opts=()
   _make_opts=(
@@ -246,7 +248,7 @@ package_ur-contracts() {
   fi
 }
 
-package_ur() {
+package_evm-contracts-source-index() {
   local \
     _make_opts=()
   depends+=(
@@ -263,7 +265,7 @@ package_ur() {
     install-scripts
 }
 
-package_ur-docs() {
+package_evm-contracts-source-index-docs() {
   local \
     _make_opts=()
   _make_opts=(
