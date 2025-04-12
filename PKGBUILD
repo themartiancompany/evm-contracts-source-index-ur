@@ -74,7 +74,7 @@ _pkgdesc=(
 pkgdesc="${_pkgdesc[*]}"
 url="https://${_pkg}.${_Proj}.org"
 pkgver="0.1.1.1"
-_commit="b5daa25e7f3d7641468e869e973b3cd3850fbba4"
+_commit="4dc8497680e0d4cc72615db162e1a2a20fb7c129"
 pkgrel=1
 arch=(
   'any'
@@ -100,6 +100,7 @@ depends=(
   "evmfs"
   "libcrash-bash"
   "libevm"
+  "solidity-compiler"
 )
 makedepends=(
   'make'
@@ -142,7 +143,7 @@ _tarname="${_pkg}-${_tag}"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum="fe63788c6dad60445c2d613dde484108770d2dadc60be0d6c11f47301c876df0"
+_archive_sum="269183e4d7a7f052ef61349fff0fbc36eae2c8e0c054a2a85757c17c27d05b9f"
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
 _archive_sig_sum="5ea20db780f7865341eb253ed5e74c4b1623a3c11a9ff90037a98cf4bd1014bf"
