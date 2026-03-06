@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0
 
 #    ----------------------------------------------------------------------
-#    Copyright © 2023, 2024, 2025  Pellegrino Prevete
+#    Copyright © 2023, 2024, 2025, 2026  Pellegrino Prevete
 #
 #    All rights reserved
 #    ----------------------------------------------------------------------
@@ -19,15 +19,18 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
-# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
-# Maintainer: Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
+# Maintainers:
+#   Truocolo
+#     <truocolo@aol.com>
+#     <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
+#   Pellegrino Prevete
+#     <pellegrinoprevete@gmail.com>
+#     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
-_os="$( \
+_os="$(
   uname \
     -o)"
-_evmfs_available="$( \
+_evmfs_available="$(
   command \
     -v \
     "evmfs" || \
@@ -73,8 +76,8 @@ _pkgdesc=(
 )
 pkgdesc="${_pkgdesc[*]}"
 url="https://${_pkg}.${_Proj}.org"
-pkgver="0.1.1.1"
-_commit="4dc8497680e0d4cc72615db162e1a2a20fb7c129"
+pkgver="0.0.0.0.0.0.0.0.0.0.1"
+_commit="7ded7406b6ae8386f0168c67067c648be46da784"
 pkgrel=1
 arch=(
   'any'
@@ -140,13 +143,15 @@ optdepends=(
 _tag_name="commit"
 _tag="${_commit}"
 _tarname="${_pkg}-${_tag}"
+_archive_sum="bd624bd5e357a449a323532fa7b044d150296941305095b70b93705e97b8f21e"
+_archive_sig_sum="844f144ee17467ba3d630c49b77b05e4a3158d39c4d2c62f08aab2eebc0222c0"
+# Gnosis
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
+# Dvorak
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum="269183e4d7a7f052ef61349fff0fbc36eae2c8e0c054a2a85757c17c27d05b9f"
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum="5ea20db780f7865341eb253ed5e74c4b1623a3c11a9ff90037a98cf4bd1014bf"
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
